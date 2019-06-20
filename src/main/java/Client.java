@@ -7,7 +7,7 @@ public class Client {
         try {
             Registry reg = LocateRegistry.getRegistry("127.0.0.1", 1099);
             ResumeInterface rInterface = (ResumeInterface) reg.lookup("resume");
-            Payload message =  rInterface.echo("Hello world returned from server");
+            Payload message =  rInterface.getUserProfileByEmail("alan@ricardo.com");
             System.out.println("Echo: " + message.message);
         } catch ( Exception ex ) {
             ex.printStackTrace();

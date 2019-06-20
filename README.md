@@ -10,7 +10,7 @@
 
 - Run Server
 
-```javac -d build/classes/java/main/ src/main/java/Server.java src/main/java/Payload.java src/main/java/ResumeService.java src/main/java/ResumeInterface.java```
+```javac -d build/classes/java/main/ src/main/java/Server.java src/main/java/Payload.java src/main/java/ResumeService.java src/main/java/ResumeInterface.java src/main/java/Repository.java src/main/java/Profile.java src/main/java/ProfileBuilder.java ```
 
 ```java -classpath build/classes/java/main/ Server (from root folder)```
 

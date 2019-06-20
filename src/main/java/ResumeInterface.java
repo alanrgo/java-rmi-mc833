@@ -13,7 +13,7 @@ public interface ResumeInterface extends Remote {
 
     Payload getExperienceByEmail(String email) throws RemoteException;
 
-    Payload listAllProfiles() throws RemoteException;
+    Payload[] listAllProfiles() throws RemoteException;
 
     Payload getUserProfileByEmail(String email) throws RemoteException;
 }

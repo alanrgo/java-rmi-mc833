@@ -7,7 +7,7 @@ public class Payload implements Serializable {
     public String message;
     public String fileSize;
     public String fileName;
-    public String file;
+    public byte[] file;
 
     public Payload() {
     }
