@@ -7,7 +7,7 @@ public class Server {
         try {
             Registry reg = LocateRegistry.createRegistry(1099);
             ResumeService service = new ResumeService();
-            reg.rebind("resume", service);
+            reg.rebind( "resume", service);
 
             System.out.println("System is ready!");
 
