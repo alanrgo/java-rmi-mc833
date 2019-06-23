@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResumeService extends UnicastRemoteObject implements ResumeInterface {
@@ -24,7 +25,10 @@ public class ResumeService extends UnicastRemoteObject implements ResumeInterfac
 
     @Override
     public Payload listAllFromCourse(String courseName) throws RemoteException {
-        return null;
+        ArrayList<Profile> profiles = repository.getAllProfilesByCertification(courseName);
+        Payload payload = new Payload();
+        payload.message = profiles.get(0).toString();
+        return payload;
     }
 
     @Override
@@ -53,30 +57,13 @@ public class ResumeService extends UnicastRemoteObject implements ResumeInterfac
         Profile aux = repository.getProfileByEmail(email);
         Payload payload = new Payload();
         payload.message = aux.toString();
-        payload.file = getFileStream(aux.filePath);
+        payload.file = repository.getFileStream(aux.filePath);
         payload.fileSize = payload.file.length;
         payload.fileName = aux.filePath;
         return payload;
     }
 
-    private byte[] getFileStream(String fileName) {
-        try {
-            URL url = getClass().getResource(fileName);
-            String pathname = url.getPath();
-            System.out.println(pathname);
-            File f = new File(pathname);
-            FileInputStream in = new FileInputStream(f);
-            byte[] fileStream = new byte[(int)f.length()];
-            int myLen = in.read(fileStream);
-            if( myLen > 0 ) {
-                return fileStream;
-            }
-            return null;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return null;
-    }
+
 
 
 }
